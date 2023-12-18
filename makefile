@@ -1,6 +1,6 @@
 CC = gcc
 YEAR = 2015
-DAY = 01
+DAY = 02
 PART = 2
 
 all: main clean

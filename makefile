@@ -1,12 +1,12 @@
 CC = gcc
 YEAR = 2015
-DAY = 04
+DAY = 05
 PART = 2
 
 all: main clean
 
 main:
-	$(CC) $(YEAR)/day_$(DAY)_$(PART).c -o build/$(YEAR)/day_$(DAY)_$(PART) include/md5.c
+	$(CC) $(YEAR)/day_$(DAY)_$(PART).c -o build/$(YEAR)/day_$(DAY)_$(PART)
 	./build/$(YEAR)/day_$(DAY)_$(PART).exe
 
 clean:

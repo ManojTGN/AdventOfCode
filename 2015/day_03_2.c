@@ -29,6 +29,7 @@
 //https://github.com/T-G-N/hashmap.c
 #include "../include/hashmap.h"
 
+//string & pointers are not supported and so using int as key
 defineMap(int, bool);
 
 int makeKey(int8_t* pos){

@@ -19,8 +19,8 @@ int main(void*){
     
     uint8_t result[16];
     
-    char input[20] = "ckczppom";
-    char tmpInp[20]= "ckczppom";
+    char input[20] = "bgvyzdsv";
+    char tmpInp[20]= "bgvyzdsv";
     char buff[10];
 
     int i = 0;

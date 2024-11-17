@@ -1,9 +1,10 @@
 # Advent Of Code
-Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as interview prep, company training, university coursework, practice problems, a speed contest, or to challenge each other.
+Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as interview prep, company training, university coursework, practice problems, a speed contest, or to challenge each other. \
+AdventOfCode: https://adventofcode.com/
 
 ### 📝 Mission
 - Absolutely There Is No Missions LOL!
-- Try Learning Some New Stuffs In C.
+- Learning Some New Stuffs In C.
 
 ### 🎉 Progress
   Every Program Is Completed In Order And Placed Under Their `Year/Day(s)` Folder Respectively And With This Table You Can See The Complete Overview Of The Progress From 2015 - 2024.

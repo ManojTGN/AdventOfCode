@@ -3,7 +3,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 AdventOfCode: https://adventofcode.com/
 
 ### 📝 Mission
-- Absolutely There Is No Missions LOL!
+- Completing In c/c++ (minimal usage of c++)!
 - Learning Some New Stuffs In C.
 
 ### 🎉 Progress

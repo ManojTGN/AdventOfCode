@@ -29,7 +29,7 @@ This Makefile automates compilation and optional execution of the program.
   
 | Year | Completion |
 |------|----------|
-| 2015 | `✅6 ` `❌19 Left` `🔅25 Total` |
+| 2015 | `✅7 ` `❌18 Left` `🔅25 Total` |
 | 2016 | `✅0 ` `❌25 Left` `🔅25 Total` |
 | 2017 | `✅0 ` `❌25 Left` `🔅25 Total` |
 | 2018 | `✅0 ` `❌25 Left` `🔅25 Total` |

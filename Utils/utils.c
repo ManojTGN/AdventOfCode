@@ -4,7 +4,7 @@ FILE* openFile(char* INPUT_FILE_PATH) {
     FILE *file = fopen(INPUT_FILE_PATH, "r");
 
     if (file == NULL) {
-        perror("Error opening file");
+        perror("Error Opening The Input File.");
         return NULL;
     }
 
@@ -14,8 +14,9 @@ FILE* openFile(char* INPUT_FILE_PATH) {
 char* nextLine(FILE* file){
     char* line = calloc(MAX_LINE_LENGTH,sizeof(char));
 
-    char* result = fgets(line, sizeof(line), file);
+    char* result = fgets(line, MAX_LINE_LENGTH, file);
     if(!result) return NULL;
+    result[strcspn(result, "\n")] = '\0'; 
 
     return line;
 }

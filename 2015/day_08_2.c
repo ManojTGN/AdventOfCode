@@ -18,6 +18,19 @@
  * 
  *   For example, given the four strings above, the total number of characters of string code (2 + 5 + 10 + 6 = 23) minus the total number of characters in memory for string values (0 + 3 + 7 + 1 = 11) is 23 - 11 = 12.
  *   
+ *   The first half of this puzzle is complete! It provides one gold star: *
+ *
+ *   --- Part Two ---
+ *   Now, let's go the other way. In addition to finding the number of characters of code, you should now encode each code representation as a new string and find the number of characters of the new encoded representation, including the surrounding double quotes.
+ *   
+ *   For example:
+ *   
+ *   "" encodes to "\"\"", an increase from 2 characters to 6.
+ *   "abc" encodes to "\"abc\"", an increase from 5 characters to 9.
+ *   "aaa\"aaa" encodes to "\"aaa\\\"aaa\"", an increase from 10 characters to 16.
+ *   "\x27" encodes to "\"\\x27\"", an increase from 6 characters to 11.
+ *   Your task is to find the total number of characters to represent the newly encoded strings minus the number of characters of code in each original string literal. For example, for the strings above, the total encoded length (6 + 9 + 16 + 11 = 42) minus the characters in the original code representation (23, just like in the first part of this puzzle) is 42 - 23 = 19.
+ *
  */
 
 #include "../Utils/utils.h"
@@ -27,40 +40,38 @@
 #define HEX_CHAR 3
 #define ESC_CHAR 1
 
+#define ACT_HEX_CHAR 4
+#define ACT_ESC_CHAR 3
+
 int main(){
     char* line = NULL;
     FILE* file = openFile(INPUT_DIR);
     
-    uint16_t STRING_IN_CODE = 0;
-    uint16_t STRING_IN_MEM  = 0;
+    uint16_t STRING_IN_CODE = 0; 
+    uint16_t STRING_IN_CODE_PREV  = 6310;
 
     while( (line = nextLine(file)) ){
         uint8_t index = 0;
         while(*line != '\0'){
             if(index == 0 || *(line+1) == '\0' ){
-                STRING_IN_CODE++;
+                STRING_IN_CODE+=3;
                 index++;
                 line++;
                 continue;
             }
 
-            if(*line == '\\'){
+            if (*line == '\\') {
                 if(*(line+1) == 'x'){
-                    STRING_IN_CODE += HEX_CHAR + 1;
-                    STRING_IN_MEM++;
-
+                    STRING_IN_CODE += ACT_HEX_CHAR + 1;
                     line += HEX_CHAR;
                     index += HEX_CHAR;
-                }else{
-                    STRING_IN_CODE += ESC_CHAR + 1;
-                    STRING_IN_MEM++;
-
+                } else {
+                    STRING_IN_CODE += ACT_ESC_CHAR + 1;
                     line += ESC_CHAR;
                     index += ESC_CHAR;
                 }
-            }else{
+            } else {
                 STRING_IN_CODE++;
-                STRING_IN_MEM++;
             }
 
             index++;
@@ -68,7 +79,7 @@ int main(){
         }
     }
 
-    int result = STRING_IN_CODE - STRING_IN_MEM;
+    int result = STRING_IN_CODE - STRING_IN_CODE_PREV;
     printf("%d",result);
 
     closeFile(file);

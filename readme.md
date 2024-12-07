@@ -38,4 +38,4 @@ This Makefile automates compilation and optional execution of the program.
 | 2021 | `✅0 ` `❌25 Left` `🔅25 Total` |
 | 2022 | `✅0 ` `❌25 Left` `🔅25 Total` |
 | 2023 | `✅0 ` `❌25 Left` `🔅25 Total` |
-| 2023 | ` --- C o m i n g  S o o n --- ` |
+| 2024 | ` --- C o m i n g  S o o n --- ` |

@@ -1,9 +1,9 @@
 # EDIT ONLY THESE VARIABLES
 # -------------------------
 YEAR    = 2015
-DAY     = 07
+DAY     = 08
 PART    = 1
-RUN_AFTER_COMPILE = true
+RUN_AFTER_COMPILE = false
 # -------------------------
 
 
@@ -11,8 +11,13 @@ RUN_AFTER_COMPILE = true
 # COMPILE VARIABLES
 # -------------------------
 CC = gcc
+CONST_CC = gcc
+FLAGS = -Wall -Wextra -Werror
 EXTENSION = c
 ifeq ($(YEAR)$(DAY)$(PART),2015071)
+  CC = g++
+  EXTENSION = cpp
+else ifeq ($(YEAR)$(DAY)$(PART),2015072)
   CC = g++
   EXTENSION = cpp
 endif
@@ -32,7 +37,8 @@ OUTPUT = $(OUTPUT_DIR)/day_$(DAY)_$(PART)
 
 all: validate
 	@mkdir -p $(OUTPUT_DIR)
-	$(CC) ./$(YEAR)/day_$(DAY)_$(PART).$(EXTENSION) -o $(OUTPUT)
+	$(CONST_CC) -c ./Utils/utils.c -o $(OUTPUT_DIR)/utils.o
+	$(CC) $(FLAGS) ./$(YEAR)/day_$(DAY)_$(PART).$(EXTENSION) $(OUTPUT_DIR)/utils.o -o $(OUTPUT) 
 	@echo "Compiled successfully: $(OUTPUT)"
 ifeq ($(RUN_AFTER_COMPILE),true)
 	@$(OUTPUT)
@@ -40,7 +46,7 @@ endif
 # ------------------------
 
 
-# Basic Variable Validation
+# BASIC VARIABLE VALIDATION
 # -------------------------
 validate:
 	@if [ "$(VALID_YEAR)" = "invalid" ]; then \

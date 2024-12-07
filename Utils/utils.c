@@ -25,3 +25,7 @@ void closeFile(FILE* file){
     fclose(file);
 }
 
+char** splitString(char* string, char* delimeter, int* size){
+    
+}
+

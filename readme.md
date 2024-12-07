@@ -5,9 +5,12 @@ AdventOfCode: https://adventofcode.com/
 ### 📝 Mission
 - Completing In c/c++ (minimal usage of c++)!
 - Learning Some New Stuffs In C / C++.
+- Not To Look At Any Solution At AnyPoint.
 
 ### 📄 Makefile 
-This Makefile automates compilation and optional execution of the program.
+This Makefile automates compilation and optional execution of the program. \
+Set your current working directory to advent of code folder and run these commands. \
+Set your current working directory to build when running the executables.
 1. Set variables in the Makefile:
    ```makefile
    YEAR              = 2015    # Year of the challenge (valid range: 2015–2024)
@@ -23,6 +26,12 @@ This Makefile automates compilation and optional execution of the program.
    ```bash
    make clean
    ```
+
+### 📄 Other Notes
+- From 2015 Day 01 to 2015 Day 07, The Inputs Are Cleaned And HardCoded. :( *Sorry!* 
+- 2015 Day 05 Part 2 May throw `Segmentation fault (core dumped)`, Kindly follow the instruction on the 79th line.
+
+
 
 ### 🎉 Progress
   Every Program Is Completed In Order And Placed Under Their `Year/Day(s)` Folder Respectively And With This Table You Can See The Complete Overview Of The Progress From 2015 - 2024.

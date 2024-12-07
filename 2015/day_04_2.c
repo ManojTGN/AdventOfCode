@@ -13,12 +13,12 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <limits.h>
 
 //https://github.com/Zunawe/md5-c
-#include "../include/md5.h"
-#define DECIMAL 10
+#include "../Utils/md5.h"
 
-int main(void*){
+int main(){
     
     uint8_t result[16];
     
@@ -28,7 +28,7 @@ int main(void*){
 
     int i = 0;
     for(i = 0; i < INT_MAX; i++){
-        itoa(i,buff,DECIMAL);
+        sprintf(buff,"%d",i);
         strcat(tmpInp, buff);
 
         md5String(tmpInp, result);

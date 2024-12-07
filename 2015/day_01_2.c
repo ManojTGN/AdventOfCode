@@ -29,7 +29,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-int main(void*){
+int main(){
     int16_t floor = 0;
     uint16_t position = 1;
 

@@ -1,26 +1,41 @@
 # EDIT ONLY THESE VARIABLES
 # -------------------------
 YEAR    = 2015
-DAY     = 08
-PART    = 2
-RUN_AFTER_COMPILE = false
+DAY     = 09
+PART    = 1
+RUN_AFTER_COMPILE = true
 # -------------------------
 
 
 
 # COMPILE VARIABLES
 # -------------------------
-CC = gcc
-CONST_CC = gcc
-FLAGS = -Wall -Wextra -Werror
-EXTENSION = c
-DEBUGGING = -g
-ifeq ($(YEAR)$(DAY)$(PART),2015071)
+CC 			= gcc
+CONST_CC 	= gcc
+FLAGS 		= -Wall -Wextra -Werror
+EXTENSION 	= c
+DEBUGGING 	= -g
+
+MATCHES 	= 2015071 2015072 2015091
+ifneq ($(filter $(YEAR)$(DAY)$(PART),$(MATCHES)),)
   CC = g++
   EXTENSION = cpp
-else ifeq ($(YEAR)$(DAY)$(PART),2015072)
-  CC = g++
-  EXTENSION = cpp
+endif
+
+SPL_FLAGS =
+ifeq ($(YEAR)$(DAY)$(PART),2015031)
+  SPL_FLAGS = -lm
+else ifeq ($(YEAR)$(DAY)$(PART),2015032)
+  SPL_FLAGS = -lm
+else ifeq ($(YEAR)$(DAY)$(PART),2015052)
+  SPL_FLAGS = -lm
+endif
+
+SPL_FILE =
+ifeq ($(YEAR)$(DAY)$(PART),2015041)
+  SPL_FILE = ./Utils/md5.c
+else ifeq ($(YEAR)$(DAY)$(PART),2015042)
+  SPL_FILE = ./Utils/md5.c
 endif
 
 VALID_YEAR := $(shell [ $(YEAR) -ge 2015 -a $(YEAR) -le 2024 ] && echo valid || echo invalid)
@@ -41,8 +56,7 @@ OUTPUT = $(OUTPUT_DIR)/day_$(DAY)_$(PART)
 all: validate
 	@mkdir -p $(BUILD_DIR)
 	$(CONST_CC) $(DEBUGGING) -c ./Utils/utils.c -o $(BUILD_DIR)/utils.o
-	$(CC) $(DEBUGGING) -c $(FLAGS) ./$(YEAR)/day_$(DAY)_$(PART).$(EXTENSION) -o $(BUILD_DIR)/$(BUILD_NAME).o
-	$(CC) $(DEBUGGING) $(BUILD_DIR)/$(BUILD_NAME).o $(BUILD_DIR)/utils.o -o $(BUILD_DIR)/$(BUILD_NAME).exe
+	$(CC) $(DEBUGGING) $(FLAGS) ./$(YEAR)/day_$(DAY)_$(PART).$(EXTENSION) $(BUILD_DIR)/utils.o $(SPL_FILE) $(SPL_FLAGS) -o $(BUILD_DIR)/$(BUILD_NAME).exe
 	@echo "Compiled successfully: $(OUTPUT)"
 ifeq ($(RUN_AFTER_COMPILE),true)
 	@$(BUILD_DIR)/$(BUILD_NAME).exe

@@ -23,6 +23,15 @@
 
 '''
 
-# Here we go again
+import req
+import utils
+
+def main():
+    input_data = utils.getInputLines(2015,9)
+    
+    for data in input_data:
+        print(data)
+
+
 if __name__ == '__main__':
-    pass
+    main()

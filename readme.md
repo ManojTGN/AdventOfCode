@@ -3,8 +3,9 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 AdventOfCode: https://adventofcode.com/
 
 ### 📝 Mission
-- Completing In c/c++ (minimal usage of c++)!
-- Learning Some New Stuffs In C / C++.
+- ~~Completing In c/c++ (minimal usage of c++)!~~
+- ~~Learning Some New Stuffs In C / C++.~~
+- Completing In Python (Im extremely bored and changed the objective to complete it. so I choosed <u>Python</u>)
 - Not To Look At Any Solution At AnyPoint.
 
 ### 📄 Makefile 

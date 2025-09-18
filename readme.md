@@ -8,6 +8,11 @@ AdventOfCode: https://adventofcode.com/
 - Completing In Python (Im extremely bored and changed the objective to complete it. so I choosed <u>Python</u>)
 - Not To Look At Any Solution At AnyPoint.
 
+> [!NOTE]
+> I originally started solving Advent of Code 2015 in **C/C++** and managed to complete up to **Day 8**.  
+> At some point, I lost interest and paused, but I’m picking it up again!  
+> From now on, all further solutions will be done **exclusively in Python** (starting from Day 9 onwards).
+
 ### 📄 Makefile 
 This Makefile automates compilation and optional execution of the program. \
 Set your current working directory to advent of code folder and run these commands. \

@@ -20,6 +20,12 @@
   The shortest of these is London -> Dublin -> Belfast = 605, and so the answer is 605 in this example.
   
   What is the distance of the shortest route?
+  --- Part Two ---
+  The next year, just to show off, Santa decides to take the route with the longest distance instead.
+  He can still start and end at any two (different) locations he wants, and he still must visit each location exactly once.
+  
+  For example, given the distances above, the longest route would be 982 via (for example) Dublin -> London -> Belfast.
+  What is the distance of the longest route?
 
 '''
 
@@ -27,13 +33,13 @@ import req
 import utils
 
 GLOBAL_DATA = {}
-MIN_DISTANCE = float('inf')
+MAX_DISTANCE = float('-inf')
 
 def rec(node, dist, visited_node):
-    global GLOBAL_DATA,MIN_DISTANCE
+    global GLOBAL_DATA,MAX_DISTANCE
     if(len(GLOBAL_DATA) == len(visited_node)):
-        if(dist < MIN_DISTANCE):
-            MIN_DISTANCE = dist
+        if(dist > MAX_DISTANCE):
+            MAX_DISTANCE = dist
         return True
     
     node_data = None
@@ -73,6 +79,6 @@ def main():
     for node in GLOBAL_DATA:
         rec(node, 0, [node])
     
-    print(MIN_DISTANCE)
+    print(MAX_DISTANCE)
 if __name__ == '__main__':
     main()

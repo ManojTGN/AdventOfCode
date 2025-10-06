@@ -44,7 +44,7 @@ Set your current working directory to build when running the executables.
   
 | Year | Completion |
 |------|----------|
-| 2015 | `✅7 ` `❌18 Left` `🔅25 Total` |
+| 2015 | `✅9 ` `❌16 Left` `🔅25 Total` |
 | 2016 | `✅0 ` `❌25 Left` `🔅25 Total` |
 | 2017 | `✅0 ` `❌25 Left` `🔅25 Total` |
 | 2018 | `✅0 ` `❌25 Left` `🔅25 Total` |

@@ -1,0 +1,93 @@
+'''
+--- Day 15: Science for Hungry People ---
+Today, you set out on the task of perfecting your milk-dunking cookie recipe. All you have to do is find the right balance of ingredients.
+
+Your recipe leaves room for exactly 100 teaspoons of ingredients. You make a list of the remaining ingredients you could use to finish the recipe (your puzzle input) and their properties per teaspoon:
+
+capacity (how well it helps the cookie absorb milk)
+durability (how well it keeps the cookie intact when full of milk)
+flavor (how tasty it makes the cookie)
+texture (how it improves the feel of the cookie)
+calories (how many calories it adds to the cookie)
+You can only measure ingredients in whole-teaspoon amounts accurately, and you have to be accurate so you can reproduce your results in the future. The total score of a cookie can be found by adding up each of the properties (negative totals become 0) and then multiplying together everything except calories.
+
+For instance, suppose you have these two ingredients:
+
+Butterscotch: capacity -1, durability -2, flavor 6, texture 3, calories 8
+Cinnamon: capacity 2, durability 3, flavor -2, texture -1, calories 3
+Then, choosing to use 44 teaspoons of butterscotch and 56 teaspoons of cinnamon (because the amounts of each ingredient must add up to 100) would result in a cookie with the following properties:
+
+A capacity of 44*-1 + 56*2 = 68
+A durability of 44*-2 + 56*3 = 80
+A flavor of 44*6 + 56*-2 = 152
+A texture of 44*3 + 56*-1 = 76
+Multiplying these together (68 * 80 * 152 * 76, ignoring calories for now) results in a total score of 62842880, which happens to be the best score possible given these ingredients. If any properties had produced a negative total, it would have instead become zero, causing the whole score to multiply to zero.
+
+Given the ingredients in your kitchen and their properties, what is the total score of the highest-scoring cookie you can make?
+'''
+
+import req
+import utils
+
+MAX_SUM = 0
+GLOBAL_DATA = {}
+
+def calc(data):
+    sum = spoons = cap = dur = fla = tex = 0
+    for name,_data in data.items():
+        values = GLOBAL_DATA[name]
+        spoons += _data
+        cap += values['capacity'] * _data
+        dur += values['durability'] * _data
+        fla += values['flavor'] * _data
+        tex += values['texture'] * _data
+
+    sum += (
+        (cap if cap > 0 else 0) *
+        (dur if dur > 0 else 0) *
+        (fla if fla > 0 else 0) *
+        (tex if tex > 0 else 0) 
+    )
+
+    return sum if(spoons == 100) else 0
+
+def rec(data,index):
+    global MAX_SUM
+    if(index >= len(data)):
+        sum = calc(data)
+        if(sum > MAX_SUM):
+            MAX_SUM = sum
+        return
+    
+    tmpIndex = 0
+    for name,_data in data.items():
+        if(index == tmpIndex):
+            for i in range(1,101):
+                data[name] = i
+                rec(data,index+1)
+        tmpIndex += 1
+
+def main():
+    input_data = utils.getInputLines(2015,15)
+
+    for data in input_data:
+        sdata = data.split(',')
+        name = data.split(':')[0]
+        GLOBAL_DATA[name] = {}
+        for sd in sdata:
+            s = sd.split(' ')
+            try:
+                GLOBAL_DATA[name][s[-2]] = int(s[-1])
+            except ValueError:
+                pass           
+    
+    index = 0
+    for name,_ in GLOBAL_DATA.items():
+        data = {x:0 for x,Y in GLOBAL_DATA.items()}
+        for i in range(1,101):
+            data[name] = i
+            rec(data,index + 1)
+        index += 1
+    print(MAX_SUM)
+if __name__ == '__main__':
+    main()

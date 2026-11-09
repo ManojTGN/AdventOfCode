@@ -43,7 +43,7 @@ Set your current working directory to build when running the executables.
   Every Program Is Completed In Order And Placed Under Their `Year/Day(s)` Folder Respectively And With This Table You Can See The Complete Overview Of The Progress From 2015 - 2024.
   
 | Year | Completion |
-|------|----------|
+|------|------------|
 | 2015 | `✅18 ` `❌07 Left` `🔅25 Total` |
 | 2016 | `✅00 ` `❌25 Left` `🔅25 Total` |
 | 2017 | `✅00 ` `❌25 Left` `🔅25 Total` |

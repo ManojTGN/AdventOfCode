@@ -52,36 +52,37 @@ How long will it take to make the medicine? Given the available replacements and
 import req
 import utils
 
-MIN_REPLACEMENT = 999999
 MAX_LETTER_COUNT = 0
 GLOBAL_DATA = {}
 FOUND_DATA = {}
 DATA = ''
+RESULT_REP = 999999
 
-def rec(_data,rep):
-    if(_data == 'e'):
-        print("RESULT: ",rep)
+def rec(data, index, rep, longrep):
+    global RESULT_REP
+
+    if(data in FOUND_DATA and FOUND_DATA[data] < rep):
         return
     
-    result = []
-    def rec2(data, index):
-        for i in range(index, len(data)):
-            for j in range(i + 1, min(i + MAX_LETTER_COUNT, len(data) + 1)):
-                if(data[i: j] in GLOBAL_DATA):
-                    sp_data = GLOBAL_DATA[ data[i: j] ]
-                    rec2(data[0: i] + sp_data + data[j+1:], j + 1 - len(data[i:j]) + len(sp_data))
+    FOUND_DATA[data] = rep
 
-        if(_data != data and data not in FOUND_DATA):
-            result.append(data)
-            FOUND_DATA[data] = True
+    if(data == 'e'):
+        RESULT_REP = min(rep, RESULT_REP)
+        print("CURRENT_RESULT: {:2d} MIN: {:2d}\r".format(rep, RESULT_REP), end='')
+        return
     
-    rec2(_data, 0)
+    for i in range(index, len(data)):
+        for j in range(i + 1, min(i + MAX_LETTER_COUNT, len(data) + 1)):
+            if(data[i: j] in GLOBAL_DATA):
+                sp_data = GLOBAL_DATA[ data[i: j] ]
+                rec(data[0: i] + sp_data + data[j:], j - len(data[i:j]) + len(sp_data), rep + 1, longrep)
+    
+    if longrep <= 10:
+        rec(data, 0, rep, longrep + 1)
 
-    for i in result:
-        rec(i, rep + 1)
 
 def main():
-    global DATA,GLOBAL_DATA,MAX_LETTER_COUNT
+    global DATA,GLOBAL_DATA,MAX_LETTER_COUNT,RESULT_REP
     input_data = utils.getInputLines(2015,19)
 
     isInput = False
@@ -98,7 +99,7 @@ def main():
         MAX_LETTER_COUNT = max(len(sdata[1]),MAX_LETTER_COUNT)
         GLOBAL_DATA[sdata[1]] = sdata[0]
 
-    rec(DATA,0)
+    rec(DATA,0,0, 0)
 
 if __name__ == '__main__':
     main()
